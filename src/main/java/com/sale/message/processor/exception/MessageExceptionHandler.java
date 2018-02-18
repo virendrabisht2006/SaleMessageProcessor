@@ -12,6 +12,6 @@ public class MessageExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(SaleException.class)
     public ResponseEntity<?> handleSaleException(Exception exception, WebRequest request) {
-        return new ResponseEntity<Object>(exception, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<Object>(exception, HttpStatus.SERVICE_UNAVAILABLE);
     }
 }
