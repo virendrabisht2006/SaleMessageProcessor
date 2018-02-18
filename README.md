@@ -19,7 +19,7 @@ Start "Application.java"
 
 #Assumption
 The sale data will be loaded first before starting for processing.  I have kept "simple-sale.csv" comma separated file containing the sale data.
-You might be intrested in working with more complex data. You can edit "simple-sale.csv" file with extra data.
+You might be interested in working with more complex data. You can edit "simple-sale.csv" file with extra data.
 And also simple sale data will be ", " i.e. comma separated. like below. The 1st line is header for file.
 
 ProductType,Quantity, Value, AdjustmentOperation,AdjustmentValue
@@ -30,6 +30,7 @@ You can store the data from this file, by calling /load rest end point.
 
 #API Exposed:
 Method= GET, URL:http://localhost:8080/health
+Method= GET, URL:http://localhost:8080/metrics
 Description: This will help to get the complete health of system example: status, memory.
 
 Method= GET, URL:/v1/rest/sales
@@ -39,6 +40,10 @@ Method= GET, URL: /v1/rest/load
 Description: This might be the first operation you would like to do. Based on sample data it loads the sales data.
 For your testing you might be interested for more complex data, you can edit sample-sales.csv file available in classpath and call load API.
 You can check the loaded sales data with /v1/rest/sales API.
+
+Also perform After every 10th message received your application should log a report detailing the number of sales of each product and their total value.
+After 50 messages your application should log that it is pausing, stop accepting new messages and log a report of the adjustments
+that have been made to each sale type while the application was running.
 
 Method= POST, URL: /v1/rest/recordMessage
 Description: This API will store/add sales message in system. This is POST request, you can make request through POSTMAN or REST template.
@@ -65,6 +70,10 @@ Input Request body with Adjustment:
 }
 
 Adjustment Operation can be: ADD, SUBTRACT, MULTIPLY, DIVIDE
+
+Also perform After every 10th message received your application should log a report detailing the number of sales of each product and their total value.
+After 50 messages your application should log that it is pausing, stop accepting new messages and log a report of the adjustments
+that have been made to each sale type while the application was running.
 
 Method= GET, URL:/v1/rest/messageMetric
 Description: I have taken two counter messageCounter and pauseCounter. messageCounter to keep the track of incoming message for print stats after every 10th message.

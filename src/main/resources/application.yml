@@ -4,3 +4,10 @@ spring:
 
 sale-service:
   url: http://localhost:8080
+
+management:
+  security:
+    enabled: false
+  health:
+    defaults:
+      enabled: true
