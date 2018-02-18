@@ -1,0 +1,1 @@
+ProductType,Quantity, Value, AdjustmentOperation,AdjustmentValueApple,100,20, , ,Apple,120,22,SUBTRACT,2Mango,500,27,ADD,10Apple,550,29, , ,Mango,480,30,ADD,2Apple,100,20,ADD,10Apple,150,22,MULTIPLY,1Mango,500,27,ADD,5Apple,550,62,DIVIDE,2Mango,480,30,ADD,2Banana,12,5, , ,
