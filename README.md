@@ -3,7 +3,7 @@
 This is an simple sale message recorder Application which process input sale message and record data in-memory.
 This SaleMessageProcessor application built up using spring boot and provide a LIST of API which will are as follow. I have tried use maximum of Java8 and TDD.
 
-#Requirement:
+# Requirement:
 
 1- All sales must be recorded, store in in-memory for each product.
 2- All messages must be processed, each processed record print in console as output
@@ -17,7 +17,8 @@ Build the source code using maven command: maven> mvn clean install
 
 Start "Application.java"
 
-#Assumption
+# Assumption:
+
 The sale data will be loaded first before starting for processing.  I have kept "simple-sale.csv" comma separated file containing the sale data.
 You might be interested in working with more complex data. You can edit "simple-sale.csv" file with extra data.
 And also simple sale data will be ", " i.e. comma separated. like below. The 1st line is header for file.
@@ -28,7 +29,8 @@ Apple,120,22,SUBTRACT,2
 
 You can store the data from this file, by calling /load rest end point.
 
-#API Exposed:
+# API Exposed:
+
 Method= GET, URL:http://localhost:8080/health
 Method= GET, URL:http://localhost:8080/metrics
 Description: This will help to get the complete health of system example: status, memory.
@@ -80,13 +82,13 @@ Description: I have taken two counter messageCounter and pauseCounter. messageCo
 and pauseCounter to will keep track of all incoming messafe, when counter reach to 50th message application will pause and could not accept new
 request will through SaleException.
 
-#Library used
+# Library used:
 
 1- Spring boot parent -- To enable spring boot application
 2- Spring starter actuator-- for health check and metric
 3- lombok -- for builder, to create immutable objects
 4- assertj -- for assertion
 5- log4j -- for logging
-6- swagger-annotation -- For API Documentation |
+6- swagger-annotation -- For API Documentation
 
 
