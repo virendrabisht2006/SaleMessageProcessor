@@ -6,12 +6,13 @@ This SaleMessageProcessor application built up using spring boot and provide a L
 # Requirement:
 
 1- All sales must be recorded, store in in-memory for each product.
+
 2- All messages must be processed, each processed record print in console as output
-3- After every 10th message received your application should log a report detailing the number of sales of each product and their total value.
-Having a message counter, after every 10th message print the stats of the sale.
+
+3- After every 10th message received your application should log a report detailing the number of sales of each product and their total value. Having a message counter, after every 10th message print the stats of the sale.
+
 4- After 50 messages your application should log that it is pausing, stop accepting new messages and log a report of the adjustments
-that have been made to each sale type while the application was running. Once 50th message received its print all adjustment for all product
-and throws a exception saying that application is going for pause and can not accept new request.
+that have been made to each sale type while the application was running. Once 50th message received its print all adjustment for all product and throws a exception saying that application is going for pause and can not accept new request.
 
 Build the source code using maven command: maven> mvn clean install
 
@@ -85,10 +86,15 @@ request will through SaleException.
 # Library used:
 
 1- Spring boot parent -- To enable spring boot application
+
 2- Spring starter actuator-- for health check and metric
+
 3- lombok -- for builder, to create immutable objects
+
 4- assertj -- for assertion
+
 5- log4j -- for logging
+
 6- swagger-annotation -- For API Documentation
 
 
