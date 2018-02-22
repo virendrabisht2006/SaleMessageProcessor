@@ -2,6 +2,7 @@ package com.sale.message.processor.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sale.message.processor.Compress;
 import com.sale.message.processor.calc.Calculator;
 import com.sale.message.processor.exception.SaleException;
 import com.sale.message.processor.model.Adjustment;
@@ -22,10 +23,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.websocket.server.PathParam;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -129,6 +128,19 @@ public class MessageController {
         return responseEntity;
     }
 
+    @RequestMapping(value = "/testQueryParam", method = RequestMethod.GET)
+    @ResponseBody
+    @Compress
+    public ResponseEntity testQueryParam(@PathParam("firstName") String firstName, @PathParam("middleName") String middleName) {
+        logger.info("Test Query param method called time: {}" + new Date());
+        response = "Hello " + firstName + " " + middleName;
+        HttpHeaders headers = new HttpHeaders();
+        //headers.add(HttpHeaders.EXPIRES, String.valueOf(100));
+        // headers.add("Cache-Control: max-age", String.valueOf(2592000));
+        // headers.add(HttpHeaders.CONTENT_ENCODING, "gzip");
+        return new ResponseEntity<String>(response, headers, HttpStatus.OK);
+    }
+
     private void recordAdjustmentSaleAfterFiftyMessage() throws SaleException {
         logger.info("Application is pausing and can not except new request");
 
@@ -169,4 +181,5 @@ public class MessageController {
         logger.info("Operation: " + adjustment.getOperation().getOpDescription() + " Adjusted Value: " + adjustment.getValue()
                 + " made for Product Type: " + message.getProductType());
     }
+
 }
