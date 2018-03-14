@@ -1,11 +1,11 @@
 # SaleMessageProcessor
 
 This is an simple sale message recorder Application which process input sale message and record data in-memory.
-This SaleMessageProcessor application built up using spring boot and provide a LIST of API which will are as follow. I have tried use maximum of Java8 and TDD.
+This SaleMessageProcessor application built up using spring boot and provide a LIST of API which are as follow. I have tried use maximum of Java8 and TDD.
 
 # Requirement:
 
-1- All sales must be recorded, store in in-memory for each product.
+1- All sales must be recorded, store sale data into in-memory for each product.
 
 2- All messages must be processed, each processed record print in console as output
 
@@ -80,7 +80,7 @@ that have been made to each sale type while the application was running.
 
 Method= GET, URL:/v1/rest/messageMetric
 Description: I have taken two counter messageCounter and pauseCounter. messageCounter to keep the track of incoming message for print stats after every 10th message.
-and pauseCounter to will keep track of all incoming messafe, when counter reach to 50th message application will pause and could not accept new
+and pauseCounter to will keep track of all incoming message, when counter reach to 50th message application will pause and could not accept new
 request will through SaleException.
 
 # Library used:
