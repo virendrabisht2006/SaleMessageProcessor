@@ -31,13 +31,13 @@ public class CalculatorTest {
     @Test
     public void shouldCalculateTotalValueForAllProductType() throws Exception {
         Double expectedTotalValue = 6000.0;
-        Map<String, Double> productTypeToTotalValue = Calculator.calculateTotalValueForAllProductType(productTypeSaleData);
+        Map<String, Double> productTypeToTotalValue = Calculator.calculateTotalValueForEachProductType(productTypeSaleData);
         double actualTotalValue = productTypeToTotalValue.get(PRODUCT_TYPE);
         assertThat(actualTotalValue).isEqualTo(expectedTotalValue);
 
         productTypeSaleData.get(PRODUCT_TYPE).add(prepareMessageData(PRODUCT_TYPE, 50, 120, Operation.SUBTRACT, 5.0));
 
-        Map<String, Double> productTypeToTotalValue1 = Calculator.calculateTotalValueForAllProductType(productTypeSaleData);
+        Map<String, Double> productTypeToTotalValue1 = Calculator.calculateTotalValueForEachProductType(productTypeSaleData);
         double actualTotalValue1 = productTypeToTotalValue1.get(PRODUCT_TYPE);
         double expectedValueAfterSubtractAdjustment = 6000 + 50 * 115;
         assertThat(actualTotalValue1).isEqualTo(expectedValueAfterSubtractAdjustment);

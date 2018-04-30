@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class Calculator {
 
-    public static Map<String, Double> calculateTotalValueForAllProductType(Map<String, List<Message>> productTypeToSaleData) {
+    public static Map<String, Double> calculateTotalValueForEachProductType(Map<String, List<Message>> productTypeToSaleData) {
 
         return productTypeToSaleData.entrySet().stream().collect(Collectors.toMap(
                 entry -> entry.getKey(),

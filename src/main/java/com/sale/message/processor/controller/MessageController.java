@@ -37,8 +37,10 @@ public class MessageController {
     private static final String FILE_INSTRUCTION = "sample-sale.csv";
     private static long messageCounter = 0;
     private static long pauseCounter = 0;
+
     @Autowired
     private ObjectMapper objectMapper;
+
     private String response = null;
     private Map<String, List<Message>> salesData = new HashMap<>();
 
@@ -154,8 +156,8 @@ public class MessageController {
 
         logger.info("Below are the Adjustments made  in sale during application running");
         productTypeWithAdjustmentSales.entrySet().stream()
-                .flatMap(entry -> entry.getValue().stream())
-                .forEach(
+                .flatMap(entry ->
+                        entry.getValue().stream()).forEach(
                         m -> recordAdjustmentForProduct(m)
                 );
         throw new SaleException("Application is pausing and can not except new request");
@@ -168,7 +170,7 @@ public class MessageController {
                 .collect(Collectors.toMap(entry -> entry.getKey(),
                         entry -> entry.getValue().size()));
 
-        Map<String, Double> productTypeToTotalValue = Calculator.calculateTotalValueForAllProductType(salesData);
+        Map<String, Double> productTypeToTotalValue = Calculator.calculateTotalValueForEachProductType(salesData);
 
         productTypeToTotalValue.entrySet().stream().forEach(entry ->
                 logger.info("Product Type: " + entry.getKey() + " No of Sale: " + productTypeToNumberOfSale.get(entry.getKey()) +
